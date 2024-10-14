@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family==Rufina:wght@400;700display=swap" rel="stylesheet">
+    <link style="width: 96px; filter: invert(100deg); " rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <title>{% block title %}{% endblock %} - Álvaro Pineda</title>
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h2>AP</h2>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <ul class="nav-links">
+                <li><a class="h" href="{{ url_for('portfolio.index') }}">Home</a></li>
+                <li><a class="p" href="{% if request.path == url_for('portfolio.index') %}#projects{% else %}{{ url_for('portfolio.projects') }}{% endif %}" >Projects</a></li>
+                <li><a class="b" href="{{ url_for('portfolio.blog') }}">Blog</a></li>
+            </ul>
+            <h2 class="moon" >Moon</h2>
+        </nav>
+    </header>
+    <section>{% block content %}{% endblock %}</section>
+    <footer>
+        <p>Copyright© 2024 Álvaro Pineda</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Blog
+{% endblock %}
+
+{% block content %}
+
+<main class="blog" >
+    <h1>Oopps, sorry!!</h1>
+    <h2>This page is under maintenance...</h2>
+    <img src="{{ url_for('static', filename='maintenance.png') }}" width="600px" alt="maintenance">
+    <h2>We'll be back soon!</h2>
+</main>
+
+{% endblock %}

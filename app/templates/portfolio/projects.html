@@ -1,0 +1,81 @@
+{%  extends 'base.html' %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+
+{% block content %}
+
+<main>
+<div class="ppage">
+    <div class="ptitle">
+    <h1>Projects</h1>
+    <h3>These are some of my projects!</h3>
+    </div>
+    <div class="pcontainer">
+            <a href="">
+            <div class="col">
+              <div class="pcard">
+                <img src="{{ url_for('static', filename='dashboard.png') }}" height="230px" width="270px" class="card-img-top" alt="project01">
+                <div class="card-body">
+                  <h4 class="pcard-title">Space Mission Launches</h4>
+                  <p class="pcard-text">Excel isn't rocket science! Conducted EDA and Power Query analysis on a space missions dataset to uncover fascinating insights, leveraging Excel's built-in functions and dynamic dashboards.</p>
+                  <p class="ptools">Excel | Power Query |</p>
+                </div>
+              </div>
+            </div>
+            </a>
+            <a href="">
+            <div class="col">
+              <div class="pcard">
+                <img src="{{ url_for('static', filename='p1.png') }}" height="230px" width="270px" class="card-img-top" alt="project02">
+                <div class="card-body">
+                  <h4 class="pcard-title">Insurance Cost Analysis</h4>
+                  <p class="pcard-text">Exploring an insurance dataset to discover key insights through Exploratory Data Analysis (EDA) and the application of statistical techniques, utilizing Python and its libraries.</p>
+                  <p class="ptools">Python | Pandas | Numpy | Scikit-learn |</p>
+                </div>
+              </div>
+            </div>
+            </a>
+            <a href="https://colombian-coffee-exportations.onrender.com/" target="_blank">
+            <div class="col">
+              <div class="pcard">
+                <img src="{{ url_for('static', filename='Col-coffee.png') }}" height="230px" width="272px" class="card-img-top" alt="project03">
+                <div class="card-body">
+                  <h4 class="pcard-title">Colombian Coffe Exportations</h4>
+                  <p class="pcard-text">Data from Colombian coffee federation about on going exportations. The data is transformed and presented in a clear, dynamic interface, allowing users to explore various aspects of the dataset, all in an intuitive and visually appealing way.</p>
+                  <p class="ptools">| Python | Pandas | Excel | Dash | Plotly |</p>
+                </div>
+              </div>
+            </div>
+            </a>
+            <a href="">
+            <div class="col">
+              <div class="pcard">
+                <img src="{{ url_for('static', filename='coming _soon.png') }}" height="200px" width="272px" class="card-img-top" alt="project04">
+                <div class="card-body">
+                  <h4 class="pcard-title">Card title</h4>
+                  <p class="pcard-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="ptools">| tools |</p>
+                </div>
+              </div>
+            </div>
+            </a>
+            <a href="">
+                <div class="col">
+                  <div class="pcard">
+                    <img src="{{ url_for('static', filename='coming _soon.png') }}" height="200px" width="272px" class="card-img-top" alt="project04">
+                    <div class="card-body">
+                      <h4 class="pcard-title">Coming soon!</h4>
+                      <p class="pcard-text">I love learning new technologies and applying them to real-world scenarios. Stay tuned for upcoming projects.</p>
+                      <p class="ptools">| tools |</p>
+                    </div>
+                  </div>
+                </div>
+                </a>
+    </div>
+</div>
+</main>
+
+{% endblock %}

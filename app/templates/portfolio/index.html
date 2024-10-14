@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="hero" >
+        <div class="hero-left" >
+            <h2>About</h2><div><p>Hi, I'm Álvaro Pineda, born and raised in Colombia. From a young age, I was passionate about technology, mathematics, and challenges that made me think. This led me to pursue a BS in Electronic Engineering.</p>
+        </div><div><p>I have a deep interest in researching new topics and exploring information to uncover patterns, trends, and insights. This curiosity drives my passion for fields like <span style="text-decoration: underline;" >Data Analytics, Machine & Deep Learning,</span> and complex data visualization.</p>
+        </div><div><p>When I'm not at my desk, you'll find me lifting weights, reading books, crafting things, or enjoying time at a local coffee shop.</p>
+        </div></div>
+        <div class="hero-right" ><img src="{{ url_for('static', filename='me.png') }}" width="400" alt="me"></div>
+    </div>
+    <div id="projects" class="projects" >
+        <h3>Some Projects</h3>
+        <div class="projects-box">
+            <div class="card" style="width: 18rem;"><a href="https://github.com/lVarol/Data-Analytics-for-Insurance-Cost-Dataset/blob/main/Insurance_Cost_Analysis.ipynb">
+                <img class="card-img-top" src="{{ url_for('static', filename='p1.png') }}" alt="Card image cap" width="280px" height="150px" >
+                <div class="card-body">
+                  <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Insurance Cost Analysis</p>Exploring an insurance dataset to discover key insights through Exploratory Data Analysis (EDA) and the application of statistical techniques, utilizing Python and its libraries.</p>
+                </a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;"><a href="https://colombian-coffee-exportations.onrender.com/" target="_blank">
+                <img class="card-img-top" src="{{ url_for('static', filename='Col-coffee.png') }}" alt="Card image cap" width="280px" height="150px" >
+                <div class="card-body">
+                  <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Colombian Coffee Exportations</p>This project processes data from a CSV file and visualizes it using Plotly and Dash to create interactive and insightful graphs.</p>
+                  </a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;"><a href="">
+                <img class="card-img-top" src="{{ url_for('static', filename='Dashboard.png') }}" alt="Card image cap" width="280px" height="150px" >
+                <div class="card-body">
+                  <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Space Mission Launches</p>Excel isn't rocket science! Conducted EDA and Power Query analysis on a space missions dataset to uncover fascinating insights, leveraging Excel's built-in functions and dynamic dashboards.</p>
+                </a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;"><a href="">
+                <img class="card-img-top" src="{{ url_for('static', filename='coming _soon.png') }}" alt="Card image cap" width="280px" height="150px" >
+                <div class="card-body">
+                  <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Coming Soon!</p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;"><a href="">
+              <img class="card-img-top" src="{{ url_for('static', filename='coming _soon.png') }}" alt="Card image cap" width="280px" height="150px" >
+              <div class="card-body">
+                <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Coming Soon!</p>I love learning new technologies and applying them to real-world scenarios. Stay tuned for upcoming projects</p>
+              </a>
+              </div>
+        </div>
+    </div>
+    <div class="tech">
+    <div class="tech-stack" >
+      <p style="color: #ffffffe0;" >I specialize in Python, focusing on automation, data organization, 
+        modeling and great visualizations. 
+        I also work with other technologies such as...</p>
+        <h3>Tech Stack</h3>
+      <div class="techs">
+        <div class="tech-text-1">
+          <span id="item1">Python</span>
+          <span id="item1">C/C++</span>
+          <span id="item1">R</span>
+          <span id="item1">JavaScript</span>
+         </div>
+        <img class="python" src="{{ url_for('static', filename='python.png') }}" alt="python" width="50px">
+        <img class="c" src="{{ url_for('static', filename='c.png') }}" alt="c" width="50px">
+        <img class="r" src="{{ url_for('static', filename='r.png') }}" alt="r" width="50px">
+        <img class="js" src="{{ url_for('static', filename='js.png') }}" alt="js" width="50px"></div>
+      <div class="techs">
+        <div class="tech-text-2">
+          <span id="item2">MySQL</span>
+          <span id="item2">Power-BI</span>
+          <span id="item2">Excel</span>
+          <span id="item2">Jupyter</span>
+         </div>
+        <img class="mysql" src="{{ url_for('static', filename='mysql.png') }}" alt="mysql" width="50px">
+        <img class="power-bi" src="{{ url_for('static', filename='power-bi.png') }}" alt="power-bi" width="50px">
+         <img class="excel" src="{{ url_for('static', filename='excel.png') }}" alt="excel" width="50px">
+         <img class="jupyter" src="{{ url_for('static', filename='jupyter.png') }}" alt="jupyter" width="50px"></div>
+      <div class="techs">
+        <div class="tech-text-3">
+          <span id="item3">AWS</span>
+          <span id="item3">Google Cloud</span>
+          <span id="item3">Git/Github</span>
+          <span id="item3">Linux</span>
+         </div>
+        <img class="aws" src="{{ url_for('static', filename='aws.png') }}" alt="aws" width="50px">
+        <img class="gcp" src="{{ url_for('static', filename='gcp.png') }}" alt="gcp" width="50px">
+        <img class="git" src="{{ url_for('static', filename='git.png') }}" alt="git" width="50px">
+        <img class="linux" src="{{ url_for('static', filename='linux.png') }}" alt="linux" width="50px">
+          </div>
+      <div class="techs"> 
+        <div class="tech-text-4">
+          <span id="item4">Raspberry Pi</span>
+          <span id="item4">Tensorflow</span>
+          <span id="item4">Pytorch</span>
+          <span id="item4">SysVerilog VHDL</span>
+         </div>
+        <img class="rpi" src="{{ url_for('static', filename='raspberry-pi.png') }}" alt="raspberry-pi" width="50px">
+        <img class="tf" src="{{ url_for('static', filename='tensorflow.png') }}" alt="tensorflow" width="50px">
+        <img class="py" src="{{ url_for('static', filename='pytorch.png') }}" alt="pytorch" width="50px">
+        <img class="sysv" src="{{ url_for('static', filename='systemverilog.png') }}" alt="systemverilog" width="50px"></div>
+    </div>
+  </div>
+    <div class="about">
+      <h3>Connect</h3>
+<div class="socials">
+    <div class="social-media"><img src="{{ url_for('static', filename='mail.png') }}" alt="mail" width="40px">
+    <a href="#">E-mail</a>
+  </div>
+  <div class="social-media"><img src="{{ url_for('static', filename='instagram.png') }}" alt="instagram" width="40px">
+    <a href="#">Instagram</a>
+  </div>
+  <div class="social-media"><img src="{{ url_for('static', filename='discord.png') }}" alt="discord" width="40px">
+    <a href="#">Discord</a>
+  </div>
+  <div class="social-media"><img src="{{ url_for('static', filename='linkedin.png') }}" alt="linkedin" width="40px">
+    <a href="#" target="_blank" >Linkedin</a>
+  </div>
+  <div class="social-media"><img src="{{ url_for('static', filename='youtube.png') }}" alt="youtube" width="40px">
+    <a href="#">Youtube</a>
+  </div>
+  <div class="social-media"><img src="{{ url_for('static', filename='twitter.png') }}" alt="twitter" width="40px">
+    <a href="#">Twitter</a>
+  </div>
+    <div class="social-media"><img src="{{ url_for('static', filename='github.png') }}" alt="github" width="40px">
+      <a href="#">Github</a>
+    </div>
+</div>
+</div>
+</main>
+
+{% endblock %}
+
