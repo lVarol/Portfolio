@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from . import portfolio
 
-def create_app():
+def create_app(environ=None, start_response=None):
     app = Flask(__name__)
 
     from. import portfolio
