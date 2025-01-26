@@ -481,7 +481,7 @@ body{
         display: flex;
         flex-direction: row;
         left: 55px;
-        top: 2920px;
+        top: 3315px;
         
         
     }
@@ -496,7 +496,7 @@ body{
         display: flex;
         flex-direction: row;
         left: 55px;
-        top: 2970px;
+        top: 3420px;
         
         
     }
@@ -511,7 +511,7 @@ body{
         display: flex;
         flex-direction: row;
         left: 65px;
-        top: 3070px;
+        top: 3520px;
         
         
     }
@@ -526,7 +526,7 @@ body{
         display: flex;
         flex-direction: row;
         left: 65px;
-        top: 3172px;
+        top: 3610px;
         
         
     }
@@ -1140,14 +1140,12 @@ main h3{
 
 
 .blog {
-    padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px 10vw 0 10vw;
-    gap: 40px;
+
+    
 
 }
+
+
 
 .blog h2{
     font-family: 'Rubik',serif;
@@ -1292,7 +1290,10 @@ footer p{
     color: #5e5e5e;
     font-family: 'Rufina',serif;
     margin: 0;
+    text-decoration: none;
 }
+
+
 
 ::-webkit-scrollbar {
     width: 8px; /* Width of the scrollbar */
@@ -1319,4 +1320,107 @@ footer p{
 /* Optional: For styling the scrollbar's corner where vertical and horizontal scrollbars meet */
 ::-webkit-scrollbar-corner {
     background-color: #1c1c1c;
+}
+
+
+
+/*BLOGS*/
+
+.etl-pipeline{
+    
+}
+
+.etl-pipeline .ptitle h3{
+    margin: 0 0 0 0;
+    padding: 40px 0 40px 0;
+}
+
+.etl-pipeline p{
+    margin: 0 0 0 0;
+    color: #ffffffe0;
+    font-family: 'Rubik', serif;
+} 
+
+
+.etl-pipeline .publish-date{
+    margin: 0 0 0 0;
+    color:#5e5e5e;
+    font-family: 'Rubik', serif;
+}
+
+.etl-pipeline h2{
+    margin: 20px 0 20px 0;
+    padding: 60px 0 40px 0;
+    color: #ffffffe0;
+}
+
+.etl-image{
+    background-color: #828997;
+    margin: 0 0 0 0; 
+    padding: 0 0 0 0;
+}
+
+
+
+.etl-pipeline .etl-text-2{
+
+    padding: 60px 0 50px 0;
+}
+
+@media (max-width: 480px) {
+    .etl-image {
+        padding: 0; 
+    }
+
+    .etl-image img {
+        width: 300px;
+        height: 200px;
+    }
+
+    .ptitle img{
+        display: none;
+    }
+}
+
+
+.etl-python{
+    width:40px;
+    height:40px;
+}
+
+.etl-use-list ul{
+    padding: 0px 0 0px 0;
+}
+
+.etl-use-list li{
+    color: #ffffffe0;
+    padding: 5px 0 5px 0;
+}
+
+
+
+.etl-uses-titles{
+    padding: 30px 0 20px 0;
+}
+
+
+
+
+
+pre {
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 0 0 0 0;
+    margin: 20px 0 45px 0;
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ddd; /* Light border */
+    overflow-x: auto; 
+    font-family: "Courier New", monospace; /* Monospace font for code */
+    font-size: 14px; /* Adjust font size */
+    line-height: 1.5; /* Improve readability */
+    color: #333; /* Text color */
+}
+
+code{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
