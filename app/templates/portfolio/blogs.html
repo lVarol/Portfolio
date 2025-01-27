@@ -7,10 +7,25 @@ Blog
 {% block content %}
 
 <main class="blog" >
-    <h1>Oopps, sorry!!</h1>
-    <h2>This page is under maintenance...</h2>
-    <img src="{{ url_for('static', filename='maintenance.png') }}" width="600px" alt="maintenance">
-    <h2>We'll be back soon!</h2>
+    <div class="ppage">
+        <div class="ptitle">
+        <h1>Blog</h1>
+        <h3>Here I share my passion about technology and science.</h3>
+        </div>
+        <div class="pcontainer">
+                <a href="{{ url_for('portfolio.etlpipeline') }}">
+                <div class="col">
+                  <div class="pcard">
+                    <img src="{{ url_for('static', filename='etl-data-pipeline.png') }}" height="250px" width="270px" class="card-img-top" alt="project01">
+                    <div class="card-body">
+                      <h4 class="pcard-title">Basic ETL Pipeline in Python with OOP</h4>
+                      <p class="pcard-text">Python-based ETL (Extract, Transform, Load) pipeline designed to process Colombian coffee export data. The pipeline extracts data from an Excel file, transforms it by cleaning and structuring it, and loads it into an SQLite database</p>
+                      <p class="ptools">Python | ETL | Data Engineering</p>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </div>
 </main>
 
 {% endblock %}

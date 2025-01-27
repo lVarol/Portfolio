@@ -22,3 +22,9 @@ def favicon():
 @bp.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+#Blogs
+
+@bp.route("/ETL-Pipeline", methods=['GET'])
+def etlpipeline():
+    return render_template('portfolio/blogs/ETL-pipeline.html')

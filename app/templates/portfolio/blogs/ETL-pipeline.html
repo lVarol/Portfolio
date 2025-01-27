@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ETL - Pipeline
+{% endblock %}
+
+{% block content %}
+
+<main class="etl-pipeline" >
+    <div class="ppage">
+        <div class="ptitle">
+        <h1>Building a Basic ETL Pipeline in Python with OOP<img class="etl-python" src="{{ url_for('static',filename='python.png')}}" width="40px" height="40px" style="margin: 0 0 0 5px ;"></h1>
+        <p class="publish-date">January 26, 2025 |</p>
+        <h3>In this blog post, we’ll explore how to build a simple ETL (Extract, Transform, Load) pipeline in Python, leveraging object-oriented programming concepts. We'll show how to retrieve data from an Excel file,
+            process and transform it, and then store it in a SQLite database.</h3>
+        </div>
+        <div class="etl-text-1">
+            <p>This post originated from my motivation to better understand ETL pipelines. I've decided to build a basic ETL pipeline in Python for future reference.</p>
+        </div>
+        <div class="etl-introduction">
+            <h2>What is an ETL Pipeline?</h2>
+            <div class="etl-image">
+                <img class="etl-png-1" src="{{ url_for('static', filename='etl-data-pipeline-diagram.png') }}"
+                style="width: 100%" alt="etl-data-pipeline-diagram">
+            </div>
+            <div class="etl-text-2">
+                <p>ETL pipelines play a crucial role in data engineering and analytics workflows. They enable the collection of data from various sources, facilitate the transformation and cleansing of data, organize it into categories,
+                     and then load it into a target data repository for subsequent analysis or reporting purposes.</p>
+            </div>
+            <div class="etl-use-list">
+                <p class="etl-use-title" style="font-weight: bold;" >Here are some examples of how processed data can be utilized:</p>
+                <p class="etl-uses-titles" style="font-weight: bold;" >Training Data for ML/AI Models</p>
+                <ul>
+                    <li>
+                        <p><strong>Natural Language Processing (NLP):</strong> Use text data from customer reviews, social media posts, or support tickets to train models for sentiment analysis or chatbot development.</p>
+                    </li>
+                    <li>
+                        <p><strong>Predictive Maintenance:</strong> Analyze sensor data from industrial equipment to predict failures and optimize maintenance schedules.</p>
+                    </li>
+                    <li>
+                        <p><strong>Image Recognition:</strong> Train models on labeled image datasets to automate tasks like image classification or object detection, applicable in fields such as medical diagnostics and autonomous vehicles.</p>
+                    </li>
+                </ul>
+                <p class="etl-uses-titles" style="font-weight: bold;" >Risk Management</p>
+                <ul>
+                    <li>
+                        <p><strong>Fraud Detection:</strong> Analyze transactional data in real-time to identify and prevent fraudulent activities.</p>
+                    </li>
+                    <li>
+                        <p><strong>Credit Risk Assessment:</strong> Use data from credit reports, transaction histories, and economic indicators to evaluate the creditworthiness of individuals or businesses.</p>
+                    </li>
+                </ul>
+                <p class="etl-uses-titles" style="font-weight: bold;" >Financial Analysis</p>
+                <ul>
+                    <li>
+                        <p><strong>Portfolio Management:</strong> Leverage historical market data and economic indicators to refine investment strategies and manage portfolio risks.</p>
+                    </li>
+                    <li>
+                        <p><strong>Cash Flow Forecasting:</strong> Analyze historical cash flow data, sales forecasts, and expenditure patterns to predict future cash flows.</p>
+                    </li>
+                </ul>
+                <p class="etl-uses-titles" style="font-weight: bold;" >Business Insights</p>
+                <ul>
+                    <li>
+                        <p><strong>Sales Analytics:</strong> Consolidate data from multiple stores or regions to identify trends, forecast sales, and improve inventory management.</p>
+                    </li>
+                    <li>
+                        <p><strong>Customer Behavior Analysis:</strong>Merge data from CRM systems, website interactions, and transaction histories to segment customers, predict behaviors, and personalize marketing strategies.</p>
+                    </li>
+                </ul>
+                <div class="etl-text-3">
+                    <h2>Setting Up the environment</h2>
+                    <pre>
+                        <code>
+|--ETL-Pipeline/
+    |-- test-data/
+        |--data_downloader.py
+        |--source_data.xlsx 
+    |-- etl-services.py
+                        </code>
+                    </pre>
+                    <p>We need to install the necessary libraries and packages.</p>
+                    <pre>
+                    <code>
+    Pip install request sqlalchemy pandas
+                    </code>
+                    </pre>
+                    <h2>Let's check our data first!</h2>
+                    <p>When we deal with data pipelines, we need to understand the data we are working with. 
+                        Is it structured data? Is it a messy dataset? Is the source reliable? How can we access it?
+                         We need to ensure that we understand all these aspects before starting to build our pipeline.</p>
+                        <br>
+                    <p>In this case, we're getting data from Colombian Coffee exportations data set, 
+                        this comes from a reliable source <a style="font-weight: bold;text-decoration: underline; color: rgb(230, 72, 72);" href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Ffederaciondecafeteros.org%2Fapp%2Fuploads%2F2024%2F04%2FExportaciones.xlsx&wdOrigin=BROWSELINK">
+                            Federacion de Cafeteros de Colombia.</a>This is an Excel file that shows data related to the exportation, such a destination countries, Bags exported in Kg, year and month and some other interesting things...</p>
+                    <br>
+                    <br>          
+                    <p>Now we know how the data is structured. The following code <strong>data_downloader.py</strong> Will help us download the dataset using the request package.
+                         it will fetch the data giving its url, then it will save it in out local machine in xlsx format.</p>
+                         <br>
+                        <pre>
+                            <code>
+    import requests
+
+    # URL of the Excel file
+    url = "https://federaciondecafeteros.org/app/uploads/2024/04/Exportaciones.xlsx"
+
+    # Download the file
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except Exception as e:
+        print(f"Error fetching the data: {e}")
+
+    # Save the file locally
+    with open("test_data/Exportaciones.xlsx", "wb") as f:
+        f.write(response.content)
+    print("File downloaded successfully :)")
+                            </code>
+                        </pre>
+                        <h2>Extracting Data</h2>
+                        <p>Now we are going to use an abstract base class for data extraction.
+                             Ensures any extraction logic must implement an extract method.</p>
+                             <br>
+                             <p>Also, let's import a few components of the libraries we installed before.</p>
+                             <br>
+                        <pre>
+                            <code>
+    import pandas as pd
+    import xml.etree.ElementTree as ET
+    from sqlalchemy import create_engine
+    from datetime import datetime
+    from abc import ABC, abstractmethod
+    
+    
+    # Define file path and database details
+    file_path = "test_data/Exportaciones.xlsx"  
+    db_path = "exportaciones.db"
+    table_name = "coffee_exports"
+    
+    
+    class ExtractService(ABC):
+        @abstractmethod
+        def extract(self):
+            pass
+    
+    class XlSXExtractService(ExtractService):
+        def __init__(self, file_path):
+            self.file_path = file_path
+    
+        def extract(self):
+    
+            data = pd.read_excel(file_path)
+            return data
+        
+                            </code>
+                        </pre>
+                        <h2>Transform Data</h2>
+                        <p>If you take a look at the Excel file, you'll notice there is more information than we need to process or want to include. Sometimes, there are missing values, incorrect formats,
+                             inconsistencies, and so on. Our goal is to clean this data. In this case,
+                              we only want to extract the date related to the exportation in the " Destino_Tipo_Vol_Val" sheet.
+                               To achieve this, we will use <strong>Pandas</strong>. 
+                               We will select only the columns and rows that contain the data we need and check for any inconsistencies.</p>
+                               <br>
+                            <pre>
+                                <code>
+    class TransformService(ABC):
+    @abstractmethod
+    def transform(self, data):
+        pass
+
+class BasicTransformService(TransformService):
+    def transform(self, data):
+
+        data = pd.read_excel("test_data/Exportaciones.xlsx",sheet_name="7. Destino_Tipo_Vol_Val",header=7,usecols="C:I")
+        data = data.dropna(how='all')
+        metadata_start_index = data[data.iloc[:, 0].astype(str).str.contains("\* Cifras preliminares", na=False)].index
+        if not metadata_start_index.empty:
+            last_valid_index = metadata_start_index[0] - 1
+            data = data.loc[:last_valid_index]
+
+        data['Año'] = data['Año'].astype(float)
+        data['Mes'] = data['Mes'].astype(float)
+        data['País de destino'] = data['País de destino']
+        data['Sacos de 60 Kg. Exportados'] = data['Sacos de 60 Kg. Exportados'].astype(float)
+        
+        return data
+                                </code>
+                            </pre>
+                            <br>
+                            <p><strong>TransformService:</strong> An abstract base class for transforming data. Requires implementation of a transform method.</p>
+                
+                <h2>Loading Data</h2>
+                <p>This is our final phase, where will we serve the data. For this case we will create a small SQL database.
+                    The following code will loads transformed data into an SQLite database using sqlalchemy, adds a timestamp column with the current timestamp.
+                    Replaces the existing table if it already exists if_exists='replace'.
+                </p>
+                <br>
+                <pre>
+                    <code>
+    class LoadService(ABC):
+    @abstractmethod
+    def load(self, data):
+        pass
+
+class SQLiteLoadService(LoadService):
+    def __init__(self, db_path, table_name):
+        self.db_path = db_path
+        self.table_name = table_name
+
+    def load(self, data):
+        engine = create_engine(f'sqlite:///{self.db_path}')
+        data['timestamp'] = datetime.now()
+        data.to_sql(self.table_name, con=engine, if_exists='replace', index=False)
+
+                    </code>
+                </pre>
+                    <h2>ETL Pipeline</h2>
+                    <p>In here we will create another class, this will call the extract method to retrieve data. 
+                        Transform the data using the transform method. Load the data into the SQLite database using the load method.
+                    </p>
+                    <pre>
+                        <code>
+ class ETLPipeline:
+    def __init__(self, extractor: ExtractService, transformer: TransformService, loader: LoadService):
+        self.extractor = extractor
+        self.transformer = transformer
+        self.loader = loader
+
+    def run(self):
+        extracted_data = self.extractor.extract()
+        transformed_data = self.transformer.transform(extracted_data)
+        self.loader.load(transformed_data)
+        
+
+ # Instantiate services
+ extract_service = XlSXExtractService(file_path)
+ transform_service = BasicTransformService()
+ load_service = SQLiteLoadService(db_path, table_name)
+
+ # Run the pipeline
+ pipeline = ETLPipeline(extract_service, transform_service, load_service)
+ pipeline.run()
+
+ print("ETL pipeline executed successfully!")
+                        </code>
+                    </pre>
+                    <br>
+                    <p>Now we have Extracted, Transformed and Loaded the data in a SQL database</p>
+                    <br>
+                    <div><img src="{{ url_for('static', filename='coffee-db.png') }}" width="100%" alt=""></div>
+                    <br>
+                    <h2>Next Steps</h2>
+                    <p>This example serves as a foundational representation of an ETL pipeline. However, it does not address the non-functional requirements essential for a production-ready solution. In real-world scenarios, data pipelines often manage large-scale datasets and must be designed to be scalable, highly available, and auditable.</p>
+                    <br>
+                    <p><strong>To meet this we can...</strong></p>
+                    <br>
+                    <ul>
+                        <li>
+                            <p>Scalability: Leverage distributed data processing frameworks like Apache Spark or Apache Flink to efficiently manage and process large datasets.</p>
+                        </li>
+                        <li>
+                            <p>Availability: Deploy your pipeline on cloud platforms such as AWS, GCP, or Azure to ensure high availability, reliability, and fault tolerance.</p>
+                        </li>
+                        <li>
+                            <p>Auditability: Integrate logging and monitoring solutions like Apache Kafka, Prometheus, and Grafana to track data processing workflows, maintain transparency, and ensure data integrity.</p>
+                        </li>
+                    </ul>
+                    <br>
+                    <p>In this blog post, we've developed a basic ETL pipeline in Python, incorporating extraction, transformation, and loading services. This example lays the groundwork for constructing more advanced and resilient ETL pipelines in the future.</p>
+                    <br>
+                </div>
+                <br>
+                <p>Thanks for reading... See you next time! :) </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

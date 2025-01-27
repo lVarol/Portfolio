@@ -481,7 +481,11 @@ body{
         display: flex;
         flex-direction: row;
         left: 55px;
+<<<<<<< HEAD
+        top: 3315px;
+=======
         top: 3355px;
+>>>>>>> c68ad52 (Initial commit with all files)
         
         
     }
@@ -496,7 +500,11 @@ body{
         display: flex;
         flex-direction: row;
         left: 55px;
+<<<<<<< HEAD
+        top: 3420px;
+=======
         top: 3460px;
+>>>>>>> c68ad52 (Initial commit with all files)
         
         
     }
@@ -511,7 +519,11 @@ body{
         display: flex;
         flex-direction: row;
         left: 65px;
+<<<<<<< HEAD
+        top: 3520px;
+=======
         top: 3560px;
+>>>>>>> c68ad52 (Initial commit with all files)
         
         
     }
@@ -526,7 +538,11 @@ body{
         display: flex;
         flex-direction: row;
         left: 65px;
+<<<<<<< HEAD
+        top: 3610px;
+=======
         top: 3650px;
+>>>>>>> c68ad52 (Initial commit with all files)
         
         
     }
@@ -1139,6 +1155,15 @@ main h3{
 }
 
 
+<<<<<<< HEAD
+.blog {
+
+    
+
+}
+
+=======
+>>>>>>> c68ad52 (Initial commit with all files)
 
 
 .blog h2{
@@ -1320,7 +1345,13 @@ footer p{
 
 /*BLOGS*/
 
+<<<<<<< HEAD
+.etl-pipeline{
+    
+}
+=======
 
+>>>>>>> c68ad52 (Initial commit with all files)
 
 .etl-pipeline .ptitle h3{
     margin: 0 0 0 0;
