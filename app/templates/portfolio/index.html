@@ -18,6 +18,12 @@ Home
     <div id="projects" class="projects" >
         <h3>Some Projects</h3>
         <div class="projects-box">
+        <div class="card" style="width: 18rem;"><a href="http://3.145.167.115/" target="_blank">
+         <img class="card-img-top" src="{{ url_for('static', filename='coffee-etl-pipeline') }}" alt="Card image cap" width="280px" height="150px" >
+         <div class="card-body">
+          <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Colombian Coffee Exportations</p>This project is a complete ETL pipeline combined with a Flask web application for visualizing Colombian coffee exports. It also applies machine learning over the data.</p>
+          </a>
+         </div>
           <div class="card" style="width: 18rem;"><a href="{{ url_for('portfolio.etlpipeline') }}">
             <img class="card-img-top" src="{{ url_for('static', filename='etl-data-pipeline.png') }}" alt="Card image cap" width="280px" height="150px" >
             <div class="card-body">
@@ -25,12 +31,6 @@ Home
             </a>
             </div>
             </div>
-            <div class="card" style="width: 18rem;"><a href="http://3.145.167.115/" target="_blank">
-                <img class="card-img-top" src="{{ url_for('static', filename='coffee-etl-pipeline') }}" alt="Card image cap" width="280px" height="150px" >
-                <div class="card-body">
-                  <p class="card-text"><p style="color: #ffffffe0; margin: 0; padding-bottom: 8px ;"" >Colombian Coffee Exportations</p>This project is a complete ETL pipeline combined with a Flask web application for visualizing Colombian coffee exports. It also applies machine learning over the data.</p>
-                  </a>
-                </div>
             </div>
             <div class="card" style="width: 18rem;"><a href="">
                 <img class="card-img-top" src="{{ url_for('static', filename='cloud.png') }}" alt="Card image cap" width="280px" height="150px" >
