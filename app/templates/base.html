@@ -36,5 +36,18 @@
     <footer>
         <p>Copyright© 2024 Álvaro Pineda</p>
     </footer>
+      <script>
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "prerender") {
+
+        fetch("/log-prerender", { method: "POST" })
+          .catch(() => {});
+      } else if (document.visibilityState === "visible") {
+      
+        fetch("/log-foreground", { method: "POST" })
+          .catch(() => {});
+      }
+    });
+  </script>
 </body>
 </html>
