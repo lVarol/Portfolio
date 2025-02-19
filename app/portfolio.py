@@ -14,6 +14,17 @@ def blog():
 def projects():
     return render_template('portfolio/projects.html')
 
+#=========================================================================
+@app.route("/log-prerender", methods=["POST"])
+def log_prerender():
+    app.logger.info("Detected a possible prerender/preload!")
+    return ("", 200)
+
+@app.route("/log-foreground", methods=["POST"])
+def log_foreground():
+    app.logger.info("Page is now fully visible (real visit).")
+    return ("", 200)
+#=========================================================================
 # Example for favicon route
 @bp.route('/favicon.ico', methods=['GET'])
 def favicon():
