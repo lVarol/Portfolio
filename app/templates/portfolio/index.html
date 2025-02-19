@@ -133,6 +133,21 @@ Home
     </div>
 </div>
 </div>
+      <script>
+    // Listen for changes in the page's visibilityState
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "prerender") {
+        // This likely indicates a Chrome preload (if supported)
+        // Send a POST to your server so you can log it in Heroku logs
+        fetch("/log-prerender", { method: "POST" })
+          .catch(() => {});
+      } else if (document.visibilityState === "visible") {
+        // This means the user has actually switched to or opened the page
+        fetch("/log-foreground", { method: "POST" })
+          .catch(() => {});
+      }
+    });
+  </script>
 </main>
 
 {% endblock %}
